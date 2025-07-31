@@ -11,7 +11,7 @@ class CVStrategiesFooter extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <div id="cv-strategies-footer-wrapper" style="text-align: center; margin: 8px 0; width: 100%;">
                 <p id="cv-strategies-footer-text">
-                    © Copyright ${this.currentYear} | All Rights Reserved.${this.getContributorPrefix()}
+                    © Copyright! ${this.currentYear} | All Rights Reserved.${this.getContributorPrefix()}
                     <a id="cv-strategies-footer-link" href="${this.getSiteLink()}" target="_blank">${this.getContributor()}</a>.
                 </p>
             </div>
