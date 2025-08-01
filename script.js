@@ -1,3 +1,89 @@
+/**
+ * # How to use custom attributes
+ *
+ * ## General Usage
+ *
+ * #### Supported Attributes
+ * [
+ *   'background-color',
+ *   'contributor-prefix',
+ *   'contributor',
+ *   'link',
+ *   'link-hover-color',
+ *   'text-align',
+ *   'font-size'
+ * ]
+ *
+ * To apply custom attributes, add them directly to the `<cv-strategies-footer>` tag in the format:
+ *
+ * <cv-strategies-footer custom-attribute="value">
+ *
+ * Example:
+ * <cv-strategies-footer background-color="#008000" contributor-prefix=" Maintained by ">
+ *
+ * ---
+ *
+ * ## Attribute Specifications
+ *
+ * #### Default Footer Text
+ * By default, the footer text is:
+ * 
+ * © Copyright 2025 | All Rights Reserved. Designed by CV Strategies.
+ *
+ * | Attribute            | Default value                                                                 |
+ * |----------------------|--------------------------------------------------------------------------------|
+ * | `contributor`        | "CV Strategies"                                                                |
+ * | `contributor-prefix` | " Designed by "                                                                |
+ * | `link`               | "https://cvstrat.com/"                                                         |
+ * | `link-hover-color`   | Calculated dynamically based on contrast rules, can be overridden manually.   |
+ * | `background-color`   | "#FFFFFF"                                                                      |
+ * | `text-align`         | "center"                                                                       |
+ * | `font-size`          | "16px"                                                                         |
+ *
+ * #### Rules/Constraints for each attribute
+ *
+ * contributor:
+ *   - Purpose: Sets the name of the designer or organization.
+ *   - Example: <cv-strategies-footer contributor="New Contributor">
+ *
+ * contributor-prefix:
+ *   - Purpose: Change the verbage before the contributor name.
+ *   - Rule: Must include spaces before and after the text.
+ *   - Example: <cv-strategies-footer contributor-prefix=" New Prefix ">
+ *
+ * link:
+ *   - Purpose: Sets link embed on the contributor text.
+ *   - Example: <cv-strategies-footer link="https://contributor-link.com">
+ *
+ * link-hover-color:
+ *   - Purpose: Set color on hover for the link text.
+ *   - Accepts hex code or WordPress theme color variable.
+ *   - Example: <cv-strategies-footer link-hover-color="#00c000">
+ *   - WP Example: <cv-strategies-footer link-hover-color="--awb-custom_color1">
+ *   - Notes:
+ *     - Drop `var()` and just use the variable name.
+ *     - Find variable via:
+ *       1. Avada Menu > Options > Colors.
+ *       2. Inspect element > CSS styles.
+ *
+ * background-color:
+ *   - Purpose: Sets the background color of the footer.
+ *   - Accepts hex or theme color variable (reference link-hover-color for instructions).
+ *   - Example: <cv-strategies-footer background-color="#cc0000">
+ *   - WP Example: <cv-strategies-footer background-color="--awb-custom_color7">
+ *
+ * text-align:
+ *   - Purpose: Change text alignment of the footer.
+ *   - Accepts standard CSS values.
+ *   - Example: <cv-strategies-footer text-align="left">
+ *
+ * font-size:
+ *   - Purpose: Set the size of the footer text.
+ *   - Accepts standard CSS values.
+ *   - Example: <cv-strategies-footer font-size="2rem">
+ */
+
+
 class CVStrategiesFooter extends HTMLElement {
     constructor() {
         super();

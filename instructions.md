@@ -5,11 +5,13 @@
 #### Supported Attributes
 ```
 [
-  'background-color',
-  'contributor-prefix',
-  'contributor',
-  'link',
-  'link-hover-color'
+    'background-color',
+    'contributor-prefix',
+    'contributor',
+    'link',
+    'link-hover-color',
+    'text-align',
+    'font-size'
 ]
 ```
 
@@ -36,15 +38,15 @@ By default, the footer text is
 
 in which:
 
-| Attribute| Default value |  |
-| -------- | ------- | ------- |
-| `contributor`  | `"CV Strategies"` | January  |
-| `contributor-prefix` | `" Designed by "`     | January  |
-| `link`    | `"https://cvstrat.com/"` |   |
-| `link-hover-color`    | The default color is calculated in the `setLinkHoverColor()` function according to brightness/contrast rules defined by WCAG 2.0, but can still be set manually according to the site's color themes. | January  |
-| `background-color`    | `"#FFFFFF"` | January  |
-| `text-align`    | `"center"` | January  |
-| `font-size`    | `"16px"` | January  |
+|Attribute |Default value |
+| :------- | :------- |
+| `contributor`  | `"CV Strategies"` |
+| `contributor-prefix` | `" Designed by "` |
+| `link`    | `"https://cvstrat.com/"` |
+| `link-hover-color`    | The default color is calculated in the `setLinkHoverColor()` function according to brightness/contrast rules defined by WCAG 2.0, but can still be set manually according to the site's color themes. |
+| `background-color`    | `"#FFFFFF"` |
+| `text-align`    | `"center"` |
+| `font-size`    | `"16px"` |
 
 
 
@@ -75,29 +77,6 @@ in which:
 </details>
 
 <details>
-<summary><strong>background-color</strong></summary>
-
-- **Purpose:** Sets the background color of the footer container.  
-- **Value:** Must be a **hex code** (e.g., `#ffffff`) or a **WordPress custom color variable**.
-    ```html
-    <cv-strategies-footer background-color = "#cc0000">
-    ```
-
-
-To use a WordPress theme color:
-
-```html
-<cv-strategies-footer background-color="--awb-custom_color1">
-```
-
-- Replace `--awb-custom_color1` with the correct variable name for your custom color.
-- To find it:
-    1. **Method 1**: Go into the back-end and find the list of theme colors by going into the Avada Menu > Options > Colors. The shortcodes can be found there.
-    2. **Method 2**: Using the inspect tool on your browser, select an element with the desired color, and look through the style menu to find the variable name. 
-
-</details>
-
-<details>
 <summary><strong>link</strong></summary>
 
 - **Purpose:** Sets link embed on the contributor text.  
@@ -113,15 +92,56 @@ To use a WordPress theme color:
 <summary><strong>link-hover-color</strong></summary>
 
 - **Purpose:** Set color on hover for the link text.  
-- **Value:** Must be a **hex code** (e.g., `#ffffff`) or a **WordPress custom color variable**. Check the instructions under `background-color` to see how to find a Wordpress custom color.
+- **Value:** Must be a **hex code** (e.g., `#ffffff`) or a **WordPress custom color variable**.
 
     ```html
     <cv-strategies-footer link-hover-color = "#00c000">
     ```
 
-    Using Wordpress:
-     ```html
-    <cv-strategies-footer link-hover-color = "--awb-custom_color1">
+To use a WordPress theme color:
+
+```html
+<cv-strategies-footer link-hover-color = "--awb-custom_color1">
+```
+
+- Replace `--awb-custom_color1` with the correct variable name for your custom color. Note that **you must drop `var( )`** and only include what is inside of the parentheses.
+- To find the variable names:
+    1. **Method 1**: Go into the back-end and find the list of theme colors by going into the Avada Menu > Options > Colors. The shortcodes can be found there.
+    2. **Method 2**: Using the inspect tool on your browser, select an element with the desired color, and look through the style menu to find the variable name. 
+
+</details>
+
+<details>
+<summary><strong>background-color</strong></summary>
+
+- **Purpose:** Sets the background color of the footer container.  
+- **Value:** Must be a **hex code** (e.g., `#ffffff`) or a **WordPress custom color variable**.
+    ```html
+    <cv-strategies-footer background-color = "#cc0000">
+    ```
+
+</details>
+
+<details>
+<summary><strong>text-align</strong></summary>
+
+- **Purpose:** Change the text alignment of the container.  
+- **Value:** Adheres to CSS text-align properties.
+
+    ```html
+    <cv-strategies-footer text-align = "left">
+    ```
+
+</details>
+
+<details>
+<summary><strong>font-size</strong></summary>
+
+- **Purpose:** Change the size of the text.  
+- **Value:** Adheres to CSS font-size properties.
+
+    ```html
+    <cv-strategies-footer font-size = "2rem">
     ```
 
 </details>
