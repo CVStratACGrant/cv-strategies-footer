@@ -12,7 +12,7 @@ class CVStrategiesFooter extends HTMLElement {
             <style id="cv-strategies-footer-style"></style>
 
             <div id="cv-strategies-footer-wrapper" style="font-size: ${this.getFontSize()}; text-align: ${this.getTextAlign()}; margin: 0; padding: 0; width: 100vw;">
-                <p id="cv-strategies-footer-text" style = "margin:0; padding:0;">
+                <p id="cv-strategies-footer-text" style="margin:0; padding:0;">
                     © Copyright ${this.currentYear} | All Rights Reserved.${this.getContributorPrefix()}
                     <a id="cv-strategies-footer-link" href="${this.getSiteLink()}" target="_blank">${this.getContributor()}</a>.
                 </p>
@@ -83,7 +83,9 @@ class CVStrategiesFooter extends HTMLElement {
     }
 
     setBackgroundColor() {
-        const backgroundColor = this.getAttribute('background-color')?.trim() ?? '#ffffff';
+        const parentBackgroundColor = getComputedStyle(this.parentElement).backgroundColor;
+        console.log(parentBackgroundColor)
+        const backgroundColor = this.getAttribute('background-color')?.trim() ?? parentBackgroundColor;
 
         let resolvedColor = backgroundColor;
         if (backgroundColor.startsWith('--')) resolvedColor = this.resolveCssVariable(backgroundColor);
