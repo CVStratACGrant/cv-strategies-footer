@@ -50,11 +50,11 @@ class CVStrategiesFooter extends HTMLElement {
     }
 
     getTextAlign() {
-        return this.getAttribute('text-align');
+        return this.getAttribute('text-align')?.trim() ?? 'center';
     }
 
     getFontSize() {
-        return this.getAttribute('font-size');
+        return this.getAttribute('font-size')?.trim() ?? '16px';
     }
 
     setLinkHoverColor(accessibleTextColor) {
