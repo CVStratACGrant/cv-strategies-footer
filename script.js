@@ -177,12 +177,10 @@ class CVStrategiesFooter extends HTMLElement {
 
         const wrapper = this.shadowRoot.getElementById('cv-strategies-footer-wrapper');
         if (this.isValidHex(resolvedColor)) wrapper.style.backgroundColor = resolvedColor;
-        console.log(wrapper.style.backgroundColor)
     }
 
     setAccessibleTextColor(color) {
         const rgb = color.startsWith('rgb') ? this.formatRgb(color) : this.parseHexToRgb(color);
-        console.log(rgb)
 
         const [red, green, blue] = rgb.map(channel => {
             const normalized = channel / 255;
