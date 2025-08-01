@@ -95,8 +95,8 @@ class CVStrategiesFooter extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style id="cv-strategies-footer-style"></style>
 
-            <div id="cv-strategies-footer-wrapper" style="font-size: ${this.getFontSize()}; text-align: ${this.getTextAlign()}; margin: 0; padding: 0; width: 100vw;">
-                <p id="cv-strategies-footer-text" style="margin:0; padding:0;">
+            <div id="cv-strategies-footer-wrapper" style="font-size: ${this.getFontSize()}; text-align: ${this.getTextAlign()}; margin: 0; padding: 0; width: 100%;">
+                <p id="cv-strategies-footer-text" style="margin: 0; padding: 0;">
                     © Copyright ${this.currentYear} | All Rights Reserved.${this.getContributorPrefix()}
                     <a id="cv-strategies-footer-link" href="${this.getSiteLink()}" target="_blank">${this.getContributor()}</a>.
                 </p>
