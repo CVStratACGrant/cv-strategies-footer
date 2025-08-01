@@ -22,21 +22,25 @@ To apply custom attributes, add them directly to the `<cv-strategies-footer>` ta
 For example, to change the background color and contributor prefix:
 
 ```html
-<cv-strategies-footer background-color="#ffffff" contributor-prefix=" Maintained by " >
+<cv-strategies-footer background-color="#ffffff" contributor-prefix=" Maintained by ">
 ```
 
 ---
 
 ## Attribute Specifications
 
-### `background-color`
+#### Copyright Disclaimer Structure
 
-- **Purpose:** Sets the background color of the footer container.
+
+<details>
+<summary><strong>background-color</strong></summary>
+
+- **Purpose:** Sets the background color of the footer container.  
 - **Value:** Must be a **hex code** (e.g., `#ffffff`) or a **WordPress custom color variable**.
 
 #### Using WordPress Theme Colors
 
-To use a WordPress theme color, write:
+To use a WordPress theme color:
 
 ```html
 <cv-strategies-footer background-color="--awb-custom_color1">
@@ -49,26 +53,38 @@ To use a WordPress theme color, write:
   - Click on **Theme Colors**.
   - Note which number corresponds to your chosen color.
 
----
+</details>
 
-### `contributor-prefix`
+<details>
+<summary><strong>`contributor-prefix`</strong></summary>
 
-- **Purpose:** Replaces the default prefix text in the copyright.
+- **Purpose:** Replaces the default prefix text in the copyright.  
 - **Default:** `" Designed by "`
 
-### `contributor`
+</details>
 
-- **Purpose:** Sets the name of the designer or organization.
+<details>
+<summary><strong>`contributor`</strong></summary>
+
+- **Purpose:** Sets the name of the designer or organization.  
 - **Default:** `"CV Strategies"`
 
-### `link`
+</details>
+
+<details>
+<summary><strong>`link`</strong></summary>
 
 - **Purpose:** Sets the URL the contributor name should link to.
 
-### `link-hover-color`
+</details>
 
-- **Purpose:** Sets the hover color for the contributor link.
+<details>
+<summary><strong>`link-hover-color`</strong></summary>
+
+- **Purpose:** Sets the hover color for the contributor link.  
 - **Value:** Hex code or WordPress theme color variable.
+
+</details>
 
 ---
 
@@ -81,17 +97,3 @@ By default, the footer displays:
 ```
 
 You can override parts of this text using the `contributor-prefix`, `contributor`, and `link` attributes.
-
----
-
-## Supported Attributes (Summary)
-
-```js
-[
-  'background-color',
-  'contributor-prefix',
-  'contributor',
-  'link',
-  'link-hover-color'
-]
-```
