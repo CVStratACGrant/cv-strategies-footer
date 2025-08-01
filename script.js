@@ -82,8 +82,6 @@
  *   - Accepts standard CSS values.
  *   - Example: <cv-strategies-footer font-size="2rem">
  */
-
-
 class CVStrategiesFooter extends HTMLElement {
     constructor() {
         super();
@@ -170,7 +168,6 @@ class CVStrategiesFooter extends HTMLElement {
 
     setBackgroundColor() {
         const parentBackgroundColor = getComputedStyle(this.parentElement).backgroundColor;
-        console.log(parentBackgroundColor)
         const backgroundColor = this.getAttribute('background-color')?.trim() ?? parentBackgroundColor;
 
         let resolvedColor = backgroundColor;
@@ -180,11 +177,12 @@ class CVStrategiesFooter extends HTMLElement {
 
         const wrapper = this.shadowRoot.getElementById('cv-strategies-footer-wrapper');
         if (this.isValidHex(resolvedColor)) wrapper.style.backgroundColor = resolvedColor;
+        console.log(wrapper.style.backgroundColor)
     }
 
-    setAccessibleTextColor(hexColor) {
-        const rgb = this.parseHexToRgb(hexColor);
-        if (!rgb) return '#000000';
+    setAccessibleTextColor(color) {
+        const rgb = color.startsWith('rgb') ? this.formatRgb(color) : this.parseHexToRgb(color);
+        console.log(rgb)
 
         const [red, green, blue] = rgb.map(channel => {
             const normalized = channel / 255;
@@ -204,6 +202,14 @@ class CVStrategiesFooter extends HTMLElement {
                 color: ${accessibleTextColor};
             }
         `;
+    }
+
+    formatRgb(rgbString) {
+          return rgbString
+            .match(/\(([^)]+)\)/)[1] // Extract inside of parentheses
+            .split(',') // Split by commas
+            .map(val => val.trim()) // Trim whitespace
+            .map(val => +val); // Convert to numbers
     }
 
     parseHexToRgb(hexColor) {
