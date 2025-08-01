@@ -1,5 +1,6 @@
-```js
 /**
+  ['background-color', 'contributor-prefix', 'contributor', 'link', 'link-hover-color'];
+
    How to use custom attributes:
     In the <cv-strategies-footer> tag, define each attribute as custom-att="value"
         --> For example, to define background color, you should write <cv-strategies-footer background-color="#ffffff">
@@ -17,11 +18,7 @@
     
 
     On default, the contributor prefix is " Designed by " 
-
-    ['background-color', 'contributor-prefix', 'contributor', 'link', 'link-hover-color'];
  */
-```
-
 class CVStrategiesFooter extends HTMLElement {
     constructor() {
         super();
@@ -35,7 +32,7 @@ class CVStrategiesFooter extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style id="cv-strategies-footer-style"></style>
 
-            <div id="cv-strategies-footer-wrapper" style="font-size: ${this.getFontSize} text-align: ${this.getTextAlign} margin: 0; padding: 0; width: 100vw;">
+            <div id="cv-strategies-footer-wrapper" style="font-size: ${this.getFontSize()}; text-align: ${this.getTextAlign()}; margin: 0; padding: 0; width: 100vw;">
                 <p id="cv-strategies-footer-text">
                     © Copyright ${this.currentYear} | All Rights Reserved.${this.getContributorPrefix()}
                     <a id="cv-strategies-footer-link" href="${this.getSiteLink()}" target="_blank">${this.getContributor()}</a>.
@@ -62,18 +59,15 @@ class CVStrategiesFooter extends HTMLElement {
     }
 
     getSiteLink() {
-        const siteLink = this.getAttribute('link')?.trim();
-        return siteLink ?? 'https://cvstrat.com/';
+        return this.getAttribute('link')?.trim() ?? 'https://cvstrat.com/';
     }
     
     getContributorPrefix() {
-        const contributorLabel = this.getAttribute('contributor-prefix');
-        return contributorLabel ?? ' Designed by ';
+        return this.getAttribute('contributor-prefix') ?? ' Designed by ';
     }
     
     getContributor() {
-        const contributor = this.getAttribute('contributor')?.trim();
-        return contributor ?? 'CV Strategies';
+        return this.getAttribute('contributor')?.trim() ?? 'CV Strategies';
     }
 
     getTextAlign() {
@@ -82,7 +76,6 @@ class CVStrategiesFooter extends HTMLElement {
 
     getFontSize() {
         return this.getAttribute('font-size');
-        
     }
 
     setLinkHoverColor(accessibleTextColor) {
