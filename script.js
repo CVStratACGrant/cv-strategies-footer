@@ -1,24 +1,3 @@
-/**
-  ['background-color', 'contributor-prefix', 'contributor', 'link', 'link-hover-color'];
-
-   How to use custom attributes:
-    In the <cv-strategies-footer> tag, define each attribute as custom-att="value"
-        --> For example, to define background color, you should write <cv-strategies-footer background-color="#ffffff">
-
-    Specifications for each attribute:
-
-    To change the background color of the container use <cv-strategies-footer background-color="#ffffff">. Note that the value must
-    always be a hex code. If using a WordPress custom color, use <cv-strategies-footer background-color="--awb-custom_color1"> where
-    "color1" refers to which custom color. You can find that information by clicking on any element, attempting to change the color
-    of something, clicking on theme colors, and checking which number refers to desired color. 
-
-    On default, the copyright disclaimer reads: "© Copyright 2025 | All Rights Reserved. Designed by CV Strategies." The attribute 
-    "contributor-prefix" refers to " Designed by " in the disclaimer and the attribute "contributor" refers to "CV Strategies." The
-    attribute "link" refers 
-    
-
-    On default, the contributor prefix is " Designed by " 
- */
 class CVStrategiesFooter extends HTMLElement {
     constructor() {
         super();
