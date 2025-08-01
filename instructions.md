@@ -22,23 +22,67 @@ To apply custom attributes, add them directly to the `<cv-strategies-footer>` ta
 For example, to change the background color and contributor prefix:
 
 ```html
-<cv-strategies-footer background-color="#ffffff" contributor-prefix=" Maintained by ">
+<cv-strategies-footer background-color="#008000" contributor-prefix=" Maintained by ">
 ```
 
 ---
 
 ## Attribute Specifications
 
-#### Copyright Disclaimer Structure
+#### Default Footer Text
+By default, the footer text is 
 
+© Copyright 2025 | All Rights Reserved. Designed by CV Strategies.
+
+in which:
+
+| Attribute| Default value |  |
+| -------- | ------- | ------- |
+| `contributor`  | `"CV Strategies"` | January  |
+| `contributor-prefix` | `" Designed by "`     | January  |
+| `link`    | `"https://cvstrat.com/"` |   |
+| `link-hover-color`    | The default color is calculated in the `setLinkHoverColor()` function according to brightness/contrast rules defined by WCAG 2.0, but can still be set manually according to the site's color themes. | January  |
+| `background-color`    | `"#FFFFFF"` | January  |
+| `text-align`    | `"center"` | January  |
+| `font-size`    | `"16px"` | January  |
+
+
+
+#### Rules/Constraints for each attribute
+
+<details>
+<summary><strong>contributor</strong></summary>
+
+- **Purpose:** Sets the name of the designer or organization.  
+- **Value:** Must be a string.
+
+    ```html
+    <cv-strategies-footer contributor = "New Contributor">
+    ```
+
+</details>
+
+<details>
+<summary><strong>contributor-prefix</strong></summary>
+
+- **Purpose:** Change the verbage before the contributor name.  
+- **Value:** Must include a blank space **before and after** the text*.
+
+    ```html
+    <cv-strategies-footer contributor-prefix = " New Prefix ">
+    ```
+
+</details>
 
 <details>
 <summary><strong>background-color</strong></summary>
 
 - **Purpose:** Sets the background color of the footer container.  
 - **Value:** Must be a **hex code** (e.g., `#ffffff`) or a **WordPress custom color variable**.
+    ```html
+    <cv-strategies-footer background-color = "#cc0000">
+    ```
 
-#### Using WordPress Theme Colors
 
 To use a WordPress theme color:
 
@@ -46,54 +90,38 @@ To use a WordPress theme color:
 <cv-strategies-footer background-color="--awb-custom_color1">
 ```
 
-- Replace `color1` with the correct number for your desired theme color.
+- Replace `--awb-custom_color1` with the correct variable name for your custom color.
 - To find it:
-  - Click on any element in the WordPress editor.
-  - Attempt to change its color.
-  - Click on **Theme Colors**.
-  - Note which number corresponds to your chosen color.
+    1. **Method 1**: Go into the back-end and find the list of theme colors by going into the Avada Menu > Options > Colors. The shortcodes can be found there.
+    2. **Method 2**: Using the inspect tool on your browser, select an element with the desired color, and look through the style menu to find the variable name. 
 
 </details>
 
 <details>
-<summary><strong>`contributor-prefix`</strong></summary>
+<summary><strong>link</strong></summary>
 
-- **Purpose:** Replaces the default prefix text in the copyright.  
-- **Default:** `" Designed by "`
+- **Purpose:** Sets link embed on the contributor text.  
+- **Value:** Must be a string, typically links to contributor's website or contact.
 
-</details>
-
-<details>
-<summary><strong>`contributor`</strong></summary>
-
-- **Purpose:** Sets the name of the designer or organization.  
-- **Default:** `"CV Strategies"`
+    ```html
+    <cv-strategies-footer link = "https://contributor-link.com">
+    ```
 
 </details>
 
 <details>
-<summary><strong>`link`</strong></summary>
+<summary><strong>link-hover-color</strong></summary>
 
-- **Purpose:** Sets the URL the contributor name should link to.
+- **Purpose:** Set color on hover for the link text.  
+- **Value:** Must be a **hex code** (e.g., `#ffffff`) or a **WordPress custom color variable**. Check the instructions under `background-color` to see how to find a Wordpress custom color.
+
+    ```html
+    <cv-strategies-footer link-hover-color = "#00c000">
+    ```
+
+    Using Wordpress:
+     ```html
+    <cv-strategies-footer link-hover-color = "--awb-custom_color1">
+    ```
 
 </details>
-
-<details>
-<summary><strong>`link-hover-color`</strong></summary>
-
-- **Purpose:** Sets the hover color for the contributor link.  
-- **Value:** Hex code or WordPress theme color variable.
-
-</details>
-
----
-
-## Default Footer Text
-
-By default, the footer displays:
-
-```
-© Copyright 2025 | All Rights Reserved. Designed by CV Strategies.
-```
-
-You can override parts of this text using the `contributor-prefix`, `contributor`, and `link` attributes.
