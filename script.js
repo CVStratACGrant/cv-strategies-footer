@@ -74,7 +74,7 @@ class CVStrategiesFooter extends HTMLElement {
             }
 
             #cv-strategies-footer-link:hover {
-                color: ${resolvedHoverColor} !important;
+                color: ${resolvedHoverColor};
             }
         `;
     }
