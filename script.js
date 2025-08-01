@@ -9,6 +9,10 @@ class CVStrategiesFooter extends HTMLElement {
     
     render() {
         this.shadowRoot.innerHTML = `
+            <style id="cv-strategies-footer-style">
+            
+            </style>
+
             <div id="cv-strategies-footer-wrapper" style="text-align: center; margin: 8px 0; width: 100%;">
                 <p id="cv-strategies-footer-text">
                     © Copyright ${this.currentYear} | All Rights Reserved.${this.getContributorPrefix()}
@@ -20,10 +24,11 @@ class CVStrategiesFooter extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        this.setBackgroundColor()
+        this.setBackgroundColor();
     }
 
-    static observedAttributes = ['background-color', 'contributor-prefix', 'contributor', 'link'];
+
+    static observedAttributes = ['background-color', 'contributor-prefix', 'contributor', 'link', 'link-hover-color'];
     attributeChangedCallback (name, oldAttribute, newAttribute) {
         if (oldAttribute !== newAttribute) this.render();
     }
@@ -49,9 +54,33 @@ class CVStrategiesFooter extends HTMLElement {
         return contributor ?? 'CV Strategies';
     }
 
+    setLinkHoverColor(accessibleTextColor) {
+        const linkHoverColor = this.getAttribute('link-hover-color')?.trim();
+        let resolvedHoverColor = linkHoverColor;
+        
+        if (!linkHoverColor) {
+            const accessibleLinkHoverColorFallback = accessibleTextColor === '#000000'
+                ? this.adjustColorBrightness(accessibleTextColor, 25)
+                : this.adjustColorBrightness(accessibleTextColor, -25);
+            resolvedHoverColor = accessibleLinkHoverColorFallback;
+        }
+        
+        if (resolvedHoverColor.startsWith('--')) resolvedHoverColor = this.resolveCssVariable(linkHoverColor);
+        if (this.isValidHex(linkHoverColor)) resolvedHoverColor = linkHoverColor;
+
+        this.shadowRoot.getElementById('cv-strategies-footer-style').textContent += `
+            #cv-strategies-footer-link {
+                transition: color 0.2s ease;
+            }
+
+            #cv-strategies-footer-link:hover {
+                color: ${resolvedHoverColor};
+            }
+        `;
+    }
+
     setBackgroundColor() {
-        const backgroundColor = this.getAttribute('background-color')?.trim();
-        if (!backgroundColor) return null;
+        const backgroundColor = this.getAttribute('background-color')?.trim() ?? '#ffffff';
 
         let resolvedColor = backgroundColor;
         if (backgroundColor.startsWith('--')) resolvedColor = this.resolveCssVariable(backgroundColor);
@@ -75,34 +104,15 @@ class CVStrategiesFooter extends HTMLElement {
 
         const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
         const accessibleTextColor = luminance > 0.5 ? '#000000' : '#ffffff';
-        const accessibleTextHoverColor = accessibleTextColor === '#000000'
-            ? this.adjustColorBrightness(accessibleTextColor, 25)
-            : this.adjustColorBrightness(accessibleTextColor, -25);
-        this.injectHoverStyle(accessibleTextColor, accessibleTextHoverColor);
-    }
 
-    injectHoverStyle(accessibleTextColor, accessibleTextHoverColor) {
-        const existingStyle = this.shadowRoot.querySelector('#cv-strategies-footer-style');
-        if (existingStyle) existingStyle.remove(); // prevent duplicates
-
-        const style = document.createElement('style');
-        style.id = 'cv-strategies-footer-style';
-        style.textContent = `
+        this.setLinkHoverColor(accessibleTextColor);
+        
+        this.shadowRoot.getElementById('cv-strategies-footer-style').textContent += `
             #cv-strategies-footer-text,
             #cv-strategies-footer-link {
                 color: ${accessibleTextColor};
             }
-
-            #cv-strategies-footer-link {
-                transition: color 0.2s ease;
-            }
-
-            #cv-strategies-footer-link:hover {
-                color: ${accessibleTextHoverColor};
-            }
         `;
-
-        this.shadowRoot.appendChild(style);
     }
 
     parseHexToRgb(hexColor) {
