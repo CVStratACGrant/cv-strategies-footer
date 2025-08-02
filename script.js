@@ -138,7 +138,7 @@ class CVStrategiesFooter extends HTMLElement {
     }
 
     getFontSize() {
-        return this.getAttribute('font-size')?.trim() ?? '14px';
+        return this.getAttribute('font-size')?.trim() ?? '16px';
     }
 
     setLinkHoverColor(accessibleTextColor) {
