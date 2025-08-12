@@ -14,19 +14,19 @@
  *   'font-size'
  * ]
  *
- * To apply custom attributes, add them directly to the `<cv-strategies-footer>` tag in the format:
+ * To apply custom attributes, add them directly to the `<cv-strategies-disclaimer>` tag in the format:
  *
- * <cv-strategies-footer custom-attribute="value">
+ * <cv-strategies-disclaimer custom-attribute="value">
  *
  * Example:
- * <cv-strategies-footer background-color="#008000" contributor-prefix=" Maintained by ">
+ * <cv-strategies-disclaimer background-color="#008000" contributor-prefix=" Maintained by ">
  *
  * ---
  *
  * ## Attribute Specifications
  *
- * #### Default Footer Text
- * By default, the footer text is:
+ * #### Default Disclaimer Text
+ * By default, the disclaimer text is:
  * 
  * © Copyright 2025 | All Rights Reserved. Designed by CV Strategies.
  *
@@ -44,22 +44,22 @@
  *
  * contributor:
  *   - Purpose: Sets the name of the designer or organization.
- *   - Example: <cv-strategies-footer contributor="New Contributor">
+ *   - Example: <cv-strategies-disclaimer contributor="New Contributor">
  *
  * contributor-prefix:
  *   - Purpose: Change the verbage before the contributor name.
  *   - Rule: Must include spaces before and after the text.
- *   - Example: <cv-strategies-footer contributor-prefix=" New Prefix ">
+ *   - Example: <cv-strategies-disclaimer contributor-prefix=" New Prefix ">
  *
  * link:
  *   - Purpose: Sets link embed on the contributor text.
- *   - Example: <cv-strategies-footer link="https://contributor-link.com">
+ *   - Example: <cv-strategies-disclaimer link="https://contributor-link.com">
  *
  * link-hover-color:
  *   - Purpose: Set color on hover for the link text.
  *   - Accepts hex code or WordPress theme color variable.
- *   - Example: <cv-strategies-footer link-hover-color="#00c000">
- *   - WP Example: <cv-strategies-footer link-hover-color="--awb-custom_color1">
+ *   - Example: <cv-strategies-disclaimer link-hover-color="#00c000">
+ *   - WP Example: <cv-strategies-disclaimer link-hover-color="--awb-custom_color1">
  *   - Notes:
  *     - Drop `var()` and just use the variable name.
  *     - Find variable via:
@@ -67,22 +67,22 @@
  *       2. Inspect element > CSS styles.
  *
  * background-color:
- *   - Purpose: Sets the background color of the footer.
+ *   - Purpose: Sets the background color of the disclaimer.
  *   - Accepts hex or theme color variable (reference link-hover-color for instructions).
- *   - Example: <cv-strategies-footer background-color="#cc0000">
- *   - WP Example: <cv-strategies-footer background-color="--awb-custom_color7">
+ *   - Example: <cv-strategies-disclaimer background-color="#cc0000">
+ *   - WP Example: <cv-strategies-disclaimer background-color="--awb-custom_color7">
  *
  * text-align:
- *   - Purpose: Change text alignment of the footer.
+ *   - Purpose: Change text alignment of the disclaimer.
  *   - Accepts standard CSS values.
- *   - Example: <cv-strategies-footer text-align="left">
+ *   - Example: <cv-strategies-disclaimer text-align="left">
  *
  * font-size:
- *   - Purpose: Set the size of the footer text.
+ *   - Purpose: Set the size of the disclaimer text.
  *   - Accepts standard CSS values.
- *   - Example: <cv-strategies-footer font-size="2rem">
+ *   - Example: <cv-strategies-disclaimer font-size="2rem">
  */
-class CVStrategiesFooter extends HTMLElement {
+class CVStrategiesDisclaimer extends HTMLElement {
     constructor() {
         super();
         
@@ -93,12 +93,12 @@ class CVStrategiesFooter extends HTMLElement {
     
     render() {
         this.shadowRoot.innerHTML = `
-            <style id="cv-strategies-footer-style"></style>
+            <style id="cv-strategies-disclaimer-style"></style>
 
-            <div id="cv-strategies-footer-wrapper" style="font-size: ${this.getFontSize()}; text-align: ${this.getTextAlign()}; margin: 0; padding: 5px 0; width: 100%;">
-                <p id="cv-strategies-footer-text" style="margin: 0; padding: 0;">
+            <div id="cv-strategies-disclaimer-wrapper" style="font-size: ${this.getFontSize()}; text-align: ${this.getTextAlign()}; margin: 0; padding: 5px 0; width: 100%;">
+                <p id="cv-strategies-disclaimer-text" style="margin: 0; padding: 0;">
                     © Copyright ${this.currentYear} | All Rights Reserved.${this.getContributorPrefix()}
-                    <a id="cv-strategies-footer-link" href="${this.getSiteLink()}" target="_blank">${this.getContributor()}</a>.
+                    <a id="cv-strategies-disclaimer-link" href="${this.getSiteLink()}" target="_blank">${this.getContributor()}</a>.
                 </p>
             </div>
         `;
@@ -155,12 +155,12 @@ class CVStrategiesFooter extends HTMLElement {
         if (resolvedHoverColor.startsWith('--')) resolvedHoverColor = this.resolveCssVariable(linkHoverColor);
         if (this.isValidHex(linkHoverColor)) resolvedHoverColor = linkHoverColor;
 
-        this.shadowRoot.getElementById('cv-strategies-footer-style').textContent += `
-            #cv-strategies-footer-link {
+        this.shadowRoot.getElementById('cv-strategies-disclaimer-style').textContent += `
+            #cv-strategies-disclaimer-link {
                 transition: color 0.2s ease;
             }
 
-            #cv-strategies-footer-link:hover {
+            #cv-strategies-disclaimer-link:hover {
                 color: ${resolvedHoverColor};
             }
         `;
@@ -175,7 +175,7 @@ class CVStrategiesFooter extends HTMLElement {
 
         this.setAccessibleTextColor(resolvedColor);
 
-        const wrapper = this.shadowRoot.getElementById('cv-strategies-footer-wrapper');
+        const wrapper = this.shadowRoot.getElementById('cv-strategies-disclaimer-wrapper');
         if (this.isValidHex(resolvedColor)) wrapper.style.backgroundColor = resolvedColor;
     }
 
@@ -194,9 +194,9 @@ class CVStrategiesFooter extends HTMLElement {
 
         this.setLinkHoverColor(accessibleTextColor);
         
-        this.shadowRoot.getElementById('cv-strategies-footer-style').textContent += `
-            #cv-strategies-footer-text,
-            #cv-strategies-footer-link {
+        this.shadowRoot.getElementById('cv-strategies-disclaimer-style').textContent += `
+            #cv-strategies-disclaimer-text,
+            #cv-strategies-disclaimer-link {
                 color: ${accessibleTextColor};
             }
         `;
@@ -245,4 +245,4 @@ class CVStrategiesFooter extends HTMLElement {
     }
 }
 
-customElements.define('cv-strategies-footer', CVStrategiesFooter);
+customElements.define('cv-strategies-disclaimer', CVStrategiesDisclaimer);
