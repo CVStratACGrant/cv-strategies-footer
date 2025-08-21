@@ -16,7 +16,7 @@ class LakePiruWaterLevelMonitor extends HTMLElement {
 
     connectedCallback() {
         this.fetchData();
-        this._intervalID = setInterval(this.fetchData, 45 * 60 * 1000); // fetch every 45 minutes
+        this._intervalID = setInterval(this.fetchData, 1 * 60 * 1000); // fetch every 45 minutes
     }
 
     disconnectedCallback() {
