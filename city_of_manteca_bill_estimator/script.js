@@ -14,10 +14,10 @@ class CityOfMantecaBillEstimator extends HTMLElement {
     async connectedCallback() {
         try {
             await Promise.all([
-                this.loadScript('./sewer-rates-and-charges.js'),
-                this.loadScript('./sewer-view.js'),
-                this.loadScript('./sewer-functions.js'),
-                this.loadScript('./sewer-core.js')
+                this.loadScript('https://cvstratacgrant.github.io/web-components/city_of_manteca_bill_estimator/sewer-rates-and-charges.js'),
+                this.loadScript('https://cvstratacgrant.github.io/web-components/city_of_manteca_bill_estimator/sewer-view.js'),
+                this.loadScript('https://cvstratacgrant.github.io/web-components/city_of_manteca_bill_estimator/sewer-functions.js'),
+                this.loadScript('https://cvstratacgrant.github.io/web-components/city_of_manteca_bill_estimator/sewer-core.js')
             ]);
         } catch (error) {
             console.error('Failed to load scripts:', error);
