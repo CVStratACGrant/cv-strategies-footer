@@ -13,10 +13,10 @@ class IndioWaterAuthorityBillEstimator extends HTMLElement {
     }
 
     async connectedCallback() {
-        await this.loadScript('water-rates-and-charges.js');
-        await this.loadScript('water-core.js');
-        await this.loadScript('water-functions.js');
-        await this.loadScript('water-view.js');
+        await this.loadScript('https://cvstratacgrant.github.io/web-components/water-rates-and-charges.js');
+        await this.loadScript('https://cvstratacgrant.github.io/web-components/water-core.js');
+        await this.loadScript('https://cvstratacgrant.github.io/web-components/water-functions.js');
+        await this.loadScript('https://cvstratacgrant.github.io/web-components/water-view.js');
     }
 
     loadScript(src) {
