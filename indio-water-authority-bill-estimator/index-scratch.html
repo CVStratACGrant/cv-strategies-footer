@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="water-style.css">
+    </head>
+    <body>
+        <button id="test-functions-button">Test Functions</button>
+
+        <div id="bill-estimator-container">
+            <select id="field-finder-menu" aria-label="This field helps you find the item on your bill.">
+                <option value="">ℹ️ Assistance finding bill fields.</option>
+                <option data-caption="Your bill will display: BF CHGE [meter sizes]." value="https://billestimator.org/wp-content/uploads/2025/04/backflow-device-testing-meter-size.png">Backflow Device Testing Meter Size</option>
+                <option value="https://billestimator.org/wp-content/uploads/2025/04/base-charge.png">Base Charge</option>
+                <option value="https://billestimator.org/wp-content/uploads/2025/04/billing-cycle-days.png">Billing Cycle Days</option>
+                <option data-caption="Your bill will display: FIRE DETECTOR [meter size]." value="https://billestimator.org/wp-content/uploads/2025/04/dedicated-fire-line.png">Dedicated Fire Line</option>
+                <option value="https://billestimator.org/wp-content/uploads/2025/04/dedicated-fire-line-charge.png">Dedicated Fire Line Charge</option>
+                <option value="https://billestimator.org/wp-content/uploads/2025/04/water-budget-for-this-period.png">Water Budget for This Period</option>
+                <option data-caption="On some bills, this will display: Tier 1 & 2." value="https://billestimator.org/wp-content/uploads/2025/04/tier-1-water-usage.png" >Tier 1 Water Usage</option>
+                <option value="https://billestimator.org/wp-content/uploads/2025/04/water-service-charges-estimator-field.png">Water Service Charges Estimator</option>
+                <option value="https://billestimator.org/wp-content/uploads/2025/04/water-used-for-this-period.png">Water Used for This Period</option>
+              </select>
+
+              <figure id="field-finder-figure">
+                <figcaption id="field-finder-image-caption" style="display: none;"></figcaption>
+                <img id="field-finder-image" src="" alt="" style="display: none;">
+              </figure>              
+
+            <label for="bill-estimator-type-menu">Water Service Charges Estimator</label>
+            <select id="bill-estimator-type-menu" name="bill-estimator-type-menu">
+                <option value="">Please select a water service charges estimator.</option>
+                <option value="Residential">Residential</option>
+                <option value="Non-Residential">Non-Residential</option>
+                <option value="Irrigation">Irrigation</option>
+            </select>
+            
+            <div id="form-and-table-container">
+                <form id="bill-estimator-form" style="display: none;">
+                    <fieldset>
+                        <legend>Indio Water Authority</legend>
+                        <div>
+                            <div id="residential-inputs-container">
+                                <div id="residential-inputs" style="display: none;">
+                                    <label for="customer-class">Customer Class</label>
+                                    <select id="customer-class" name="customer-class" required>
+                                        <option value="">Please select an option.</option>
+                                        <option value="Single-Family">Single-Family</option>
+                                        <option value="Apartment">Apartment</option>
+                                        <option value="Condo">Condo</option>
+                                        <option value="Residential 55+">Residential 55+</option>
+                                        <option value="Mobile Home">Mobile Home</option>
+                                        <option value="RV Park">RV Park</option>
+                                    </select>
+                                    
+                                    <label for="current-billing-cycle-days">Current Billing Cycle Length (Days)</label>
+                                    <input type="number" id="current-billing-cycle-days" name="current-billing-cycle-days"  min="20" max="40" placeholder="Ex. 30" required>
+                                </div>
+                                <div id="multi-family-residential-inputs" style="display: none;">
+                                    <label for="dwelling-units">Dwelling Units</label>
+                                    <input type="number" id="dwelling-units" name="dwelling-units" min="1" placeholder="Ex. 30" required>
+                                </div>
+                            </div>
+
+                            <label for="meter-size">Select Meter Size:</label>
+                            <select id="meter-size" name="meter-size" required>
+                                <option value=''>Please select a meter size.</option>
+                                <option value=''>I'm not sure.</option>
+                                <option value='5/8"'>5/8"</option>
+                                <option value='3/4"'>3/4"</option>
+                                <option value='1"'>1"</option>
+                                <option value='1 1/2"'>1 1/2"</option>
+                                <option value='2"'>2"</option>
+                                <option value='3"'>3"</option>
+                                <option value='4"'>4"</option>
+                                <option value='6"'>6"</option>
+                                <option value='8"'>8"</option>
+                                <option value='10"'>10"</option>
+                            </select>
+
+                            <div id="base-charge-container">
+                                <label for="base-charge" style="display: none;">Base Charge (Dollars)</label>
+                                <small id="base-charge-small-text" style="display: none;">Note: For 2024, 5/8" and 3/4", as well as 8" and 10", share identical base charges. The estimator defaults to 3/4" and 8" in these cases, based on prevalence. This will reduce accuracy if one's actual meter size differs.</small>
+                                <input style="display: none;" type="number" id="base-charge" name="base-charge" placeholder="Ex. 21.16" step="0.01" required>
+                            </div>
+                            
+                            <label for="tier-1-billing-units-water-usage">Tier 1 Water Usage (CCF)</label>
+                            <input type="number" id="tier-1-billing-units-water-usage" name="tier-1-billing-units-water-usage" placeholder="Ex. 10" step="1" required>
+                            
+                            <label for="current-billing-units-water-usage">Water Used for this Period (CCF)</label>
+                            <input type="number" id="current-billing-units-water-usage" name="current-billing-units-water-usage" placeholder="Ex. 12" step="1" required>
+                            
+                            <label for="current-billing-units-total-water-budget">Water Budget for this Period (CCF)</label>
+                            <input type="number" id="current-billing-units-total-water-budget" name="current-billing-units-total-water-budget" placeholder="Ex. 15" step="1" required>
+                            
+                            <label for="dedicated-fire-line-included">Do you have a dedicated fire line?</label>
+                            <select id="dedicated-fire-line-included" name="dedicated-fire-line-included" required>
+                                <option value="">Please select an option.</option>
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                            
+                            <div id="dedicated-fire-line-charge-container">
+                                <label for="dedicated-fire-line-charge" style="display: none;">Dedicated Fire Line Charge (Dollars)</label>
+                                <input type="number" id="dedicated-fire-line-charge" name="dedicated-fire-line-charge" placeholder="Ex. 40" step="0.01" required style="display: none;">
+                            </div>
+                            
+                            <label for="backflow-device-testing">Backflow Device Testing Meter Size</label>
+                            <select id="backflow-device-testing" name="backflow-device-testing" required>
+                                <option value="">Please select an option.</option>
+                                <option value="">None</option>
+                                <option value='Backflow Device Testing - 5/8", 3/4" , 1"'>Backflow Device Testing - 5/8", 3/4" , 1"</option>
+                                <option value='Backflow Device Testing - 1 1/2", and 2"'>Backflow Device Testing - 1 1/2", and 2"</option>
+                                <option value='Backflow Device Testing - 3" and 4"'>Backflow Device Testing - 3" and 4"</option>
+                                <option value='Backflow Device Testing - 6" and Over'>Backflow Device Testing - 6" and Over</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                    <div id="form-footer">
+                        <button type="reset">Reset</button>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+
+                <table style="display: none;">
+                    <h3 >
+                    <caption>Charges</caption>
+                    </h3>
+                    <thead>
+                        <tr>
+                            <th scope="col">Current</th>
+                            <th scope="col">2025</th>
+                            <th scope="col">2026</th>
+                            <th scope="col">2027</th>
+                            <th scope="col">2028</th>
+                            <th scope="col">2029</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template id="bill-table-template-row">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                    <tfoot>
+                        <tr id="bill-table-footer-row">
+                            <template id="template-charge-breakdown">
+                                <td>
+                                    <details>
+                                        <summary>Info</summary>
+                                        <p></p>
+                                    </details>
+                                </td>
+                            </template>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </body>
+    <script src="water-rates-and-charges.js"></script>
+    <script src="water-core.js"></script>
+    <script src="water-functions.js"></script>
+    <script src="water-view.js"></script>
+</html>
