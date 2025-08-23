@@ -92,6 +92,7 @@ testFunctionsButton.addEventListener('click', () => {
       formData: {
         'backflow-device-testing': 'Backflow Device Testing - 5/8", 3/4" , 1"',
         "base-charge": 52.90,
+        "meter-size": '',
         "tier-1-billing-units-water-usage": 41,
         "current-billing-units-water-usage": 62,
         "current-billing-units-total-water-budget": 43,
@@ -107,6 +108,7 @@ testFunctionsButton.addEventListener('click', () => {
       formData: {
         'backflow-device-testing': 'Backflow Device Testing - 6" and Over',
         "base-charge": 0.00,
+        "meter-size": '',
         "tier-1-billing-units-water-usage": 0,
         "current-billing-units-water-usage": 0,
         "current-billing-units-total-water-budget": 0,
@@ -122,6 +124,7 @@ testFunctionsButton.addEventListener('click', () => {
       formData: {
         'backflow-device-testing': 'Backflow Device Testing - 1 1/2", and 2"',
         "base-charge": 169.26,
+        "meter-size": '',
         "tier-1-billing-units-water-usage": 374,
         "current-billing-units-water-usage": 374,
         "current-billing-units-total-water-budget": 466,
@@ -137,6 +140,7 @@ testFunctionsButton.addEventListener('click', () => {
       formData: {
         'backflow-device-testing': 'Backflow Device Testing - 1 1/2", and 2"',
         "base-charge": 169.26,
+        "meter-size": '',
         "tier-1-billing-units-water-usage": 5,
         "current-billing-units-water-usage": 25,
         "current-billing-units-total-water-budget": 5,
@@ -152,6 +156,7 @@ testFunctionsButton.addEventListener('click', () => {
       formData: {
         'backflow-device-testing': 'Backflow Device Testing - 5/8", 3/4" , 1"',
         "base-charge": 52.90,
+        "meter-size": '',
         "tier-1-billing-units-water-usage": 5,
         "current-billing-units-water-usage": 5,
         "current-billing-units-total-water-budget": 12,
@@ -167,6 +172,7 @@ testFunctionsButton.addEventListener('click', () => {
       formData: {
         'backflow-device-testing': '',
         "base-charge": 52.90,
+        "meter-size": '',
         "tier-1-billing-units-water-usage": 77,
         "current-billing-units-water-usage": 166,
         "current-billing-units-total-water-budget": 77,
@@ -182,6 +188,7 @@ testFunctionsButton.addEventListener('click', () => {
       formData: {
         'backflow-device-testing': '',
         "base-charge": 52.90,
+        "meter-size": '',
         "tier-1-billing-units-water-usage": 9,
         "current-billing-units-water-usage": 48,
         "current-billing-units-total-water-budget": 27,
@@ -197,6 +204,7 @@ testFunctionsButton.addEventListener('click', () => {
       formData: {
         'backflow-device-testing': '',
         "base-charge": 21.16,
+        "meter-size": '',
         "tier-1-billing-units-water-usage": 10,
         "current-billing-units-water-usage": 118,
         "current-billing-units-total-water-budget": 26,
