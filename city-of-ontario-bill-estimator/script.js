@@ -14,9 +14,9 @@ class CityOfOntarioBillEstimator extends HTMLElement {
     async connectedCallback() {
         try {
             await this.loadScript('https://cvstratacgrant.github.io/web-components/city-of-ontario-bill-estimator/rates-and-charges.js');
-            await this.loadScript('https://cvstratacgrant.github.io/web-components/city-of-ontario-bill-estimator/core.js');
-            await this.loadScript('https://cvstratacgrant.github.io/web-components/city-of-ontario-bill-estimator/function.js');
             await this.loadScript('https://cvstratacgrant.github.io/web-components/city-of-ontario-bill-estimator/view.js');
+            await this.loadScript('https://cvstratacgrant.github.io/web-components/city-of-ontario-bill-estimator/functions.js');
+            await this.loadScript('https://cvstratacgrant.github.io/web-components/city-of-ontario-bill-estimator/core.js');
         } catch (error) {
             console.error('Failed to load scripts:', error);
         }
