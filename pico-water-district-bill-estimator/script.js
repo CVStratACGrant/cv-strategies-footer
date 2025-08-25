@@ -1,17 +1,35 @@
-
+import { externalFormWrapper } from "./structure.js";
+import { externalFormWrapperStyle } from "./style.js";
 
 class PicoWaterDistrictBillEstimator extends HTMLElement {
     constructor() {
         super();
 
-        this.innerHTML = ``;
+        this.innerHTML = `
+            <style>${externalFormWrapperStyle}</style>
+            ${externalFormWrapper}
+        `;
     }
 
     async connectedCallback() {
-        await this.loadScript('')
+        try {
+            await this.loadScript('https://cvstratacgrant.github.io/web-components/city-of-ontario-bill-estimator/rates.js')
+            await this.loadScript('https://cvstratacgrant.github.io/web-components/city-of-ontario-bill-estimator/functions.js')
+        } catch (error) {
+            console.error('Failed to load scripts:', error);
+        }
     }
 
     loadScript(src) {
-
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.defer = true;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.body.appendChild(script);
+        });
     }
 }
+
+customElements.define('pico-water-district-bill-estimator', PicoWaterDistrictBillEstimator);
