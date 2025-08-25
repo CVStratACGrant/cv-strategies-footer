@@ -1,5 +1,5 @@
-import { billEstimatorContainer } from "./structure";
-import { billEstimatorStyle } from "./style";
+import { billEstimatorContainer } from "./structure.js";
+import { billEstimatorStyle } from "./style.js";
 
 class CityOfOntarioBillEstimator extends HTMLElement {
     constructor() {
