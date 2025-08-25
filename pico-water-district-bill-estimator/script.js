@@ -13,8 +13,8 @@ class PicoWaterDistrictBillEstimator extends HTMLElement {
 
     async connectedCallback() {
         try {
-            await this.loadScript('https://cvstratacgrant.github.io/web-components/pico-water-district/rates.js')
-            await this.loadScript('https://cvstratacgrant.github.io/web-components/pico-water-district/functions.js')
+            await this.loadScript('https://cvstratacgrant.github.io/web-components/pico-water-district-bill-estimator/rates.js')
+            await this.loadScript('https://cvstratacgrant.github.io/web-components/pico-water-district-bill-estimator/functions.js')
         } catch (error) {
             console.error('Failed to load scripts:', error);
         }
